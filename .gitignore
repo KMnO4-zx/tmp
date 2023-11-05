@@ -216,3 +216,5 @@ fabric.properties
 # logs
 log/result
 
+# model
+model/

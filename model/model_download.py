@@ -15,5 +15,8 @@ import os
 # 设置环境变量
 os.environ['HF_ENDPOINT'] = 'https://hf-mirror.com'
 
+"""
+    - distilbert-base-uncased-finetuned-sst-2-english
+"""
 # 下载模型
-os.system('huggingface-cli download --resume-download internlm/internlm-chat-7b --local-dir internlm-chat-7b')
+os.system('huggingface-cli download --resume-download distilbert-base-uncased-finetuned-sst-2-english --local-dir distilbert-base-uncased-finetuned-sst-2-english')
