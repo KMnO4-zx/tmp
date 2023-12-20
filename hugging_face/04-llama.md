@@ -344,3 +344,5 @@ class LlamaRMSNorm(nn.Module):
         hidden_states = hidden_states * torch.rsqrt(variance + self.variance_epsilon)
         return self.weight * hidden_states.to(input_dtype)
 ```
+
+> 参考：[B站UP良睦路程序员-transformers源码阅读](https://space.bilibili.com/45156039)
