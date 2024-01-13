@@ -230,7 +230,7 @@ with open('math_xtuner.json', 'w') as f:
     json.dump(res, f, indent=4, ensure_ascii=False)
 ```
 
-### copy XTuner 配置文件
+### Step-3 copy XTuner 配置文件
 
 
 XTuner 使用就比较简单了，直接就是复制配置文件！
@@ -277,7 +277,7 @@ dataset=dict(type=load_dataset, path='json', data_files=dict(train=data_path))
 dataset_map_fn=None
 ```
 
-### Step-3 训练模型
+### Step-4 训练模型
 
 直接就是训练模型，这里我用的是`internlm-chat-7b`模型，训练大概需要2个小时左右，训练期间显存占用在14.5G左右。
 
