@@ -218,3 +218,5 @@ log/result
 
 # model
 model/
+
+*.yaml
