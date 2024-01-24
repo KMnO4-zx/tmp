@@ -1,4 +1,5 @@
 import requests
+from datetime import datetime
 
 def get_total_stars(username):
     total_stars = 0
@@ -53,3 +54,10 @@ openmmlab = 'open-mmlab'
 print(f"Total stars for {org_name}: {get_total_stars_for_org(org_name)}")
 print(f"Total stars for {openmmlab}: {get_total_stars_for_org(openmmlab)}")
 print(f"Total stars for {internlm}: {get_total_stars_for_org(internlm)}")
+
+with open('./star.txt', 'a') as f:
+    f.write(f'{datetime.now()}: Total stars for {username} : {get_total_stars(username)}\n')
+    f.write(f'{datetime.now()}: Total stars for {org_name} : {get_total_stars_for_org(org_name)}\n')
+    f.write(f'{datetime.now()}: Total stars for {internlm} : {get_total_stars_for_org(internlm)}\n')
+    f.write(f'{datetime.now()}: Total stars for {openmmlab} : {get_total_stars_for_org(openmmlab)}\n')
+    f.write(f'\n')
