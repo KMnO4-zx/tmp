@@ -1,5 +1,19 @@
-2024-01-24 21:32:26.767348: Total stars for KMnO4-zx : 298
 2024-01-24 21:32:28.557597: Total stars for datawhalechina : 82980
 2024-01-24 21:32:31.008745: Total stars for InternLM : 10241
 2024-01-24 21:32:32.675057: Total stars for open-mmlab : 104207
+
+2024-01-26 21:20:49.765194: Total stars for datawhalechina : 83119
+2024-01-26 21:20:50.966533: Total stars for InternLM : 10433
+2024-01-26 21:20:52.559057: Total stars for open-mmlab : 104322
+
+
+2024-01-29 10:25:03.001716: Total stars for KMnO4-zx : 305
+2024-01-29 10:25:04.206711: Total stars for datawhalechina : 83236
+2024-01-29 10:25:05.174270: Total stars for InternLM : 10523
+2024-01-29 10:25:06.305704: Total stars for open-mmlab : 104419
+
+2024-01-30 22:53:55.510641: Total stars for KMnO4-zx : 308
+2024-01-30 22:53:56.396517: Total stars for datawhalechina : 83369
+2024-01-30 22:53:57.363006: Total stars for InternLM : 10641
+2024-01-30 22:53:58.232587: Total stars for open-mmlab : 104547
 
