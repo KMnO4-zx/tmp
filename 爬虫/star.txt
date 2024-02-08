@@ -22,3 +22,13 @@
 2024-02-04 14:30:26.212891: Total stars for InternLM : 11031
 2024-02-04 14:30:27.089732: Total stars for open-mmlab : 104829
 
+2024-02-05 16:39:58.487219: Total stars for KMnO4-zx : 320
+2024-02-05 16:39:59.385563: Total stars for datawhalechina : 83739
+2024-02-05 16:40:00.314002: Total stars for InternLM : 11081
+2024-02-05 16:40:01.157033: Total stars for open-mmlab : 104886
+
+2024-02-08 19:45:11.100464: Total stars for KMnO4-zx : 322
+2024-02-08 19:45:12.061884: Total stars for datawhalechina : 83927
+2024-02-08 19:45:13.038500: Total stars for InternLM : 11200
+2024-02-08 19:45:13.914051: Total stars for open-mmlab : 105055
+
