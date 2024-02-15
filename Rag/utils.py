@@ -45,10 +45,10 @@ class ReadFiles:
                     file_list.append(os.path.join(filepath, filename))
         return file_list
 
-    def get_content(self, file_path: List[str]):
+    def get_content(self):
         docs = []
         # 读取文件内容
-        for file in file_path:
+        for file in self.file_list:
             content = self.read_file_content(file)
             chunk_content = self.get_chunk(content)
             docs.extend(chunk_content)
@@ -122,11 +122,3 @@ class ReadFiles:
         # 读取文本文件
         with open(file_path, 'r', encoding='utf-8') as file:
             return file.read()
-
-
-if __name__ == "__main__":
-    read_files = ReadFiles(path="./data")
-    paths = read_files.file_list
-    docs = read_files.get_content(paths)
-    print(docs[130])
-    print(len(docs))

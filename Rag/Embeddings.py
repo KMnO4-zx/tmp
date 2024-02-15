@@ -79,3 +79,20 @@ class JinaEmbedding(BaseEmbeddings):
             device = torch.device("cpu")
         model = AutoModel.from_pretrained(self.path, trust_remote_code=True).to(device)
         return model
+
+class ZhipuEmbedding(BaseEmbeddings):
+    """
+    class for Zhipu embeddings
+    """
+    def __init__(self, path: str = '', is_api: bool = True) -> None:
+        super().__init__(path, is_api)
+        if self.is_api:
+            from zhipuai import ZhipuAI
+            self.client = ZhipuAI(api_key=os.getenv("ZHIPUAI_API_KEY")) 
+    
+    def get_embedding(self, text: str) -> List[float]:
+        response = self.client.embeddings.create(
+        model="embedding-2",
+        input=text,
+        )
+        return response.data[0].embedding
