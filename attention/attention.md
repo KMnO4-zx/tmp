@@ -6,7 +6,9 @@
 
 ChatGPT和其他大型语言模型使用一种特殊的神经网络，称为变形金刚（吴恩达老师亲口说的）（transformer）。变形金刚的主要特点是注意力机制。注意力可以用以下方程定义：
 
-$$ \text{attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V $$
+$$
+\text{attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
+$$
 
 注意力有多种形式，但这种版本的注意力（称为缩放点积注意力）最初在原始的变形金刚论文中提出，并且仍然是许多基于变形金刚的神经网络的基础。在这篇文章中，我们将通过从基础出发推导这个方程来构建对上述方程的直观理解。
 
