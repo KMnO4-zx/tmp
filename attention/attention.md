@@ -1,5 +1,9 @@
 # Attention 机制的理解
 
+> 原文：https://jaykmody.com/blog/attention-intuition/ 
+
+> 译：不要葱姜蒜
+
 ChatGPT和其他大型语言模型使用一种特殊的神经网络，称为变形金刚（吴恩达老师亲口说的）（transformer）。变形金刚的主要特点是注意力机制。注意力可以用以下方程定义：
 
 $$ \text{attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V $$
@@ -192,3 +196,71 @@ print(kv_lookup("fruit", ["apple", "banana", "chair"], [10, 5, 2]))
 
 ### Values as Vectors
 
+目前，键值对中的值只是数字。然而，我们也可以用一定大小的向量来代替它们$d_v$。比如，我们可以用一个$d_v$维的向量来表示每个值。
+
+```python
+d = {
+    "apple": [0.9, 0.2, -0.5, 1.0]
+    "banana": [1.2, 2.0, 0.1, 0.2]
+    "chair": [-1.2, -2.0, 1.0, -0.2]
+}
+```
+
+当我们通过加权求和计算输出时，我们将对向量而非数字执行加权求和（即进行标量-向量乘法而不是标量-标量乘法）。这是可取的，因为向量使我们能够存储/传达比单一数字更多的信息。
+
+为了对我们的方程进行这种更改，我们不是将注意力分数乘以一个向量\(v\)，而是将它们乘以值向量的行矩阵\(V\)(类似于我们如何将键堆叠起来形成\(K\))：
+
+$$
+\text{attention}(\boldsymbol{q}, K, V) = \text{softmax}(\boldsymbol{q}K^T)V
+$$
+
+当然，我们的输出不再是一个标量，而是一个维度为 $d_v$ 的向量。
+
+## Scaling
+
+我们的查询和键之间的点积如果 $d_k$ 较大，其幅度可能会变得非常大。这会使`softmax`函数的输出更加极端。例如，`softmax([3, 2, 1]) = [0.665, 0.244, 0.090]`，但是当数值较大时，`softmax([30, 20, 10]) = [9.99954600e-01, 4.53978686e-05, 2.06106005e-09]`。在训练神经网络时，这意味着梯度会变得非常小，这是不利的。作为解决方案，我们通过 $\frac{1}{\sqrt{d_k}}$ 缩放我们的预softmax分数：
+
+$$
+\text{attention}(\boldsymbol{q}, K, V) = \text{softmax}(\frac{\boldsymbol{q}K^T}{\\sqrt{d_k}})V
+$$
+
+## Multiple Queries
+
+在实践中，我们经常想要为 $n_q$ 个不同的查询执行多个查找，而不仅仅是单个查询。当然，我们总是可以一次又一次地这样做，将每个查询单独插入门限方程。然而，如果我们像处理 $K$ 和 $V$ 一样，将查询向量按行堆叠成一个矩阵 $Q$ ，我们可以计算出一个 $n_q$  by $d_v$ 的矩阵作为输出，其中行 $i$ 是第 $i$ 个查询的注意力输出向量：
+
+$$
+\text{attention}(Q, K, V) = \text{softmax}(\frac{QK^T}{\sqrt{d_k}})V
+$$
+
+也就是说，$\text{attention}(Q, K, V)_i = \text{attention}(q_i, K, V)$ 。
+
+这比我们为每个查询依次运行注意力（例如，在for循环中）要快，因为我们可以并行化计算（特别是在使用GPU时）。
+
+注意，我们的softmax输入成为一个矩阵，而不是一个向量。当我们在这里写softmax时，我们的意思是独立地对矩阵的每一行进行softmax，就像我们是在依次做事情一样。
+
+## Result
+
+因此，我们得到了原始论文中缩放点积注意力的最终方程：
+
+$$
+\text{attention}(Q, K, V) = \text{softmax}(\frac{QK^T}{\sqrt{d_k}})V
+$$
+
+code:
+
+```python
+import numpy as np
+
+def softmax(x):
+    # assumes x is a matrix and we want to take the softmax along each row
+    # (which is achieved using axis=-1 and keepdims=True)
+    return np.exp(x) / np.sum(np.exp(x), axis=-1, keepdims=True)
+
+def attention(Q, K, V):
+    # assumes Q is a matrix of shape (n_q, d_k)
+    # assumes K is a matrix of shape (n_k, d_k)
+    # assumes v is a matrix of shape (n_k, d_v)
+    # output is a matrix of shape (n_q, d_v)
+    d_k = K.shape[-1]
+    return softmax(Q @ K.T / np.sqrt(d_k)) @ V
+```
