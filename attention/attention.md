@@ -223,7 +223,7 @@ $$
 我们的查询和键之间的点积如果 $d_k$ 较大，其幅度可能会变得非常大。这会使`softmax`函数的输出更加极端。例如，`softmax([3, 2, 1]) = [0.665, 0.244, 0.090]`，但是当数值较大时，`softmax([30, 20, 10]) = [9.99954600e-01, 4.53978686e-05, 2.06106005e-09]`。在训练神经网络时，这意味着梯度会变得非常小，这是不利的。作为解决方案，我们通过 $\frac{1}{\sqrt{d_k}}$ 缩放我们的预softmax分数：
 
 $$
-\text{attention}(\boldsymbol{q}, K, V) = \text{softmax}(\frac{\boldsymbol{q}K^T}{\\sqrt{d_k}})V
+\text{attention}(\boldsymbol{q}, K, V) = \text{softmax}(\frac{\boldsymbol{q}K^T}{\sqrt{d_k}})V
 $$
 
 ## Multiple Queries
