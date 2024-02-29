@@ -74,7 +74,7 @@ $$
 
 你可以看到相似的单词聚集在一起。水果聚集在右上角，蔬菜聚集在左上角，家具聚集在底部。实际上，你甚至可以看到蔬菜和水果群比它们与家具群更接近，因为它们是更密切相关的事物。
 
-你甚至可以想象在词向量上进行算术运算。例如，给定单词“king”、“queen”、“man”和“woman”及其相应的向量表示 $\boldsymbol{v}_{\text{king}}$ , $\boldsymbol{v}_{\text{queen}}$, $\boldsymbol{v}_{\text{man}}$, $\boldsymbol{v}_{\text{women}}$，我们可以想象：
+你甚至可以想象在词向量上进行算术运算。例如，给定单词“king”、“queen”、“man”和“woman”及其相应的向量表示 $\boldsymbol{v}_{\text{king}}$ ,  $\boldsymbol{v}_{\text{queen}}$ , $\boldsymbol{v}_{\text{man}}$ ,  $\boldsymbol{v}_{\text{women}}$ ，我们可以想象：
 
 $$
 \boldsymbol{v}_{\text{queen}} - \boldsymbol{v}_{\text{women}} + \boldsymbol{v}_{\text{man}} \sim \boldsymbol{v}_{\text{king}}
