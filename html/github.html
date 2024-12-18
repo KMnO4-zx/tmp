@@ -89,27 +89,12 @@
         <h1>GITHUB RECEIPT 2024</h1>
         <div class="date"></div>
         <div class="order"></div>
-        <script>
-            // 获得当前日期
-            document.addEventListener("DOMContentLoaded", function() {
-                const dateElement = document.querySelector('.date');
-                const currentDate = new Date();
-                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-                dateElement.textContent = currentDate.toLocaleDateString('zh-CN', options).toUpperCase();
-            });
-            // 获得累计访问人次
-            document.addEventListener("DOMContentLoaded", function() {
-                const orderElement = document.querySelector('.order');
-                let visitCount = localStorage.getItem('visitCount') || 0;
-                visitCount++;
-                localStorage.setItem('visitCount', visitCount);
-                orderElement.textContent = `ORDER #${visitCount}`;
-            });
-        </script>
-        
         <div class="section">
+            <!-- /这里加一个用户头像 -->
+            <img src="https://avatars.githubusercontent.com/u/77671993?v=4" alt="User Avatar" style="border-radius: 50%; margin-bottom: 10px; width: 50px; height: 50px; display: block; margin-left: auto; margin-right: auto;">
             <p><span class="bold">CUSTOMER:</span>不要葱姜蒜</p>
             <p>@KmN04-zx</p>
+            <p>靡不有初，鲜克有终</p>
         </div>
 
         <div class="section">
@@ -154,4 +139,21 @@
         </div>
     </div>
 </body>
+<script>
+    // 获得当前日期
+    document.addEventListener("DOMContentLoaded", function() {
+        const dateElement = document.querySelector('.date');
+        const currentDate = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        dateElement.textContent = currentDate.toLocaleDateString('zh-CN', options).toUpperCase();
+    });
+    // 获得累计访问人次
+    document.addEventListener("DOMContentLoaded", function() {
+        const orderElement = document.querySelector('.order');
+        let visitCount = localStorage.getItem('visitCount') || 0;
+        visitCount++;
+        localStorage.setItem('visitCount', visitCount);
+        orderElement.textContent = `ORDER #${visitCount}`;
+    });
+</script>
 </html>
