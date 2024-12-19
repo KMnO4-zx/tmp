@@ -47,7 +47,7 @@ def ciou_loss(box1, box2, x1y1x2y2=True):
     with torch.no_grad():
         alpha = v / (1 - iou + v)
     return 1 - iou + (rho2 / c2 + v * alpha)
-
+s
 
 if __name__ == '__main__':
 
