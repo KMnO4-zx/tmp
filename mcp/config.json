@@ -1,0 +1,6 @@
+{
+    "url": "https://mcp.amap.com/sse?key=6f1c7170730dd6d79e7d8d87fdf0c9a2",
+    "headers": {},
+    "timeout": 60,
+    "sse_read_timeout": 300
+}
