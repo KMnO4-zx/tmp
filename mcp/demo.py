@@ -140,6 +140,29 @@ class Server:
             except Exception as e:
                 logging.error(f"Error during cleanup of server {self.name}: {e}")
 
+class LLMClient:
+    """Manages communication with the LLM provider."""
+
+    def __init__(self, servers: list[Server], config: dict[str, Any]) -> None:
+        self.servers: list[Server] = servers
+        self.config: dict[str, Any] = config
+        
+    async def get_tools(self) -> list[Tool]:
+        """Get tools from all servers.
+
+        Returns:
+            A list of tools from all servers.
+        """
+        tools_llm_format = []
+        tools = await self.servers.list_tools()
+        for tool in tools:
+            tools_llm_format.append(tool.format_for_llm())
+        return tools_llm_format
+    
+
+
+
+
 
 if __name__ == "__main__":
     config = Configuration()

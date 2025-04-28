@@ -41,6 +41,7 @@ class Configuration:
         """Initialize configuration with environment variables."""
         self.load_env()
         self.api_key = os.getenv("LLM_API_KEY")
+        self.base_url = os.getenv("LLM_BASE_URL")
 
     @staticmethod
     def load_env() -> None:
