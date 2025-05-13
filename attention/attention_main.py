@@ -43,6 +43,8 @@ if __name__ == '__main__':
     attention_mask = torch.ones(batch_size, seq_len)
     attention_mask[:, 5:] = 0  # 屏蔽掉每个 batch 中 seq_len 的后 5 个位置
 
+    print("==" * 5, " Attention  Test ", "==" * 5)
+
     # 创建一个 MHA 实例
     mha = MultiHeadAttention(hidden_size, num_heads)
     # 通过 MHA 层
@@ -53,7 +55,7 @@ if __name__ == '__main__':
     mha_params, mha_flops = count_params_and_flops(mha, (seq_len, hidden_size))
     print(f"MHA Params: {mha_params}, FLOPs: {mha_flops}")
 
-    print("===" * 10)
+    print("===" * 13)
 
     # 创建一个 MQA 实例
     mqa = MultiQueryAttention(hidden_size, num_heads)
@@ -65,7 +67,7 @@ if __name__ == '__main__':
     mqa_params, mqa_flops = count_params_and_flops(mqa, (seq_len, hidden_size))
     print(f"MQA Params: {mqa_params}, FLOPs: {mqa_flops}")
 
-    print("===" * 10)
+    print("===" * 13)
 
     # 创建一个 GQA 实例
     group_size = 2  # 每组 2 个头，共 4 组
