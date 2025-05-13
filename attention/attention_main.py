@@ -6,6 +6,7 @@ from contextlib import redirect_stdout
 from MHA import MultiHeadAttention
 from MQA import MultiQueryAttention
 from GQA import GroupedQueryAttention
+from MLA import MultiHeadLatentAttention
 
 def count_params_and_flops(module: nn.Module, input_shape: tuple):
     """
@@ -79,3 +80,14 @@ if __name__ == '__main__':
     # 统计参数量和计算量
     gqa_params, gqa_flops = count_params_and_flops(gqa, (seq_len, hidden_size))
     print(f"GQA Params: {gqa_params}, FLOPs: {gqa_flops}")
+
+    print("===" * 13)
+    # 创建一个 MLA 实例
+    mla = MultiHeadLatentAttention(hidden_size=hidden_size, num_heads=num_heads)
+    # 通过 MLA 层
+    mla_output = mla(hidden_state, attention_mask)
+    # 打印输出形状
+    print("MLA Output Shape:", mla_output.shape)
+    # 统计参数量和计算量
+    mla_params, mla_flops = count_params_and_flops(mla, (seq_len, hidden_size))
+    print(f"MLA Params: {mla_params}, FLOPs: {mla_flops}")
