@@ -595,3 +595,9 @@ if __name__ == '__main__':
     mla_params, mla_flops = count_params_and_flops(mla, (seq_len, hidden_size))
     print(f"MLA Params: {mla_params}, FLOPs: {mla_flops}")
 ```
+
+## 参考引用
+
+[1] 苏剑林. (2024, May). *缓存与效果的极限拉扯：从MHA、MQA、GQA到MLA*. [Online]. Available: [https://kexue.fm/archives/10091](https://kexue.fm/archives/10091)
+
+[2] 苏剑林. (2025, May). *Transformer升级之路：20、MLA究竟好在哪里？* [Online]. Available: https://kexue.fm/archives/10907
