@@ -601,3 +601,5 @@ if __name__ == '__main__':
 [1] 苏剑林. (2024, May). *缓存与效果的极限拉扯：从MHA、MQA、GQA到MLA*. [Online]. Available: [https://kexue.fm/archives/10091](https://kexue.fm/archives/10091)
 
 [2] 苏剑林. (2025, May). *Transformer升级之路：20、MLA究竟好在哪里？* [Online]. Available: https://kexue.fm/archives/10907
+
+[3] 三重否定. 知乎文章 *多头隐注意力（Multi-Head Latent Attention, MLA） 及简洁pytorch 实现*， 来源：https://zhuanlan.zhihu.com/p/715155329
