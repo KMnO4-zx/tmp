@@ -222,3 +222,4 @@ model/
 *.yaml
 
 *data/
+*.out
