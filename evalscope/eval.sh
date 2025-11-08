@@ -10,5 +10,5 @@ evalscope perf \
     --api openai \
     --dataset openqa \
     --stream \
-    --swanlab-api-key 'BIYVGq2rfWmD9sFMCehUG' \
+    --swanlab-api-key 'xxxx' \
     --name "AMD370-${MODEL}-number${NUMBER}-parallel${PARALLEL}"
